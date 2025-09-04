@@ -6,4 +6,4 @@
 
 ## Ссылки
 
-- [Публичная страница на GitHub Pages](https://ВАШ_ЛОГИН.github.io/ИМЯ_РЕПОЗИТОРИЯ/)
+- [Публичная страница на GitHub Pages](https://daniildddd.github.io/programmingTechnologies/)
