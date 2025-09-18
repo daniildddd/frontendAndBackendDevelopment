@@ -1,4 +1,3 @@
-/* БАЗА: читаемость и предсказуемость размеров */
 * {
 	box-sizing: border-box;
 }
@@ -9,55 +8,197 @@ body {
 	padding: 0;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
-	font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
-	line-height: 1.5;
+	background: var(--color-bg);
+	color: var(--color-fg);
+	font-family: var(--font-body);
+	line-height: 1.6;
 }
 
-/* Формы: размеры, отступы, визуальный порядок */
-label {
+img,
+video {
+	max-width: 100%;
+	height: auto;
 	display: block;
-	margin: 0.5rem 0 0.25rem;
 }
 
+/* Новое правило для растягивания изображений в портфолио */
+#portfolio img {
+	width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+button,
 input,
 select,
-textarea,
-button {
-	width: 100%;
-	max-width: 480px;
-	padding: 0.5rem 0.75rem;
-	border: 1px solid #c8c8c8;
-	border-radius: 8px;
-	background: #fff;
+textarea {
+	font: inherit;
+	color: inherit;
 }
 
-/* Кнопка по умолчанию */
-button,
-[type='submit'] {
-	background: #0a84ff;
-	color: #fff;
+:root {
+	--color-bg: #3498db;
+	--color-fg: #fff;
+	--color-muted: #e0e0ee;
+	--color-primary: #ffd700;
+	--color-danger: #ff4d4d;
+	--font-body: Arial, sans-serif;
+	--space-1: 5px;
+	--space-2: 10px;
+	--space-3: 15px;
+	--space-4: 20px;
+	--space-5: 35px;
+	--radius: 10px;
+	--shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+	color-scheme: light;
+}
+
+#logo img {
+	width: 60px;
+	height: 60px;
+}
+
+body.theme-dark {
+	color-scheme: dark;
+	--color-bg: #3498db;
+	--color-fg: #f0f0f0;
+	--color-muted: #aaa;
+	--color-primary: #4aa3ff;
+}
+
+li {
+	list-style: none;
+}
+
+header ul {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	padding: 0.5rem;
+	background: transparent;
+	border-bottom: none;
+}
+
+.container,
+.section,
+.hero,
+.card__img,
+dialog {
+	background: transparent;
+}
+
+dialog {
+	padding: 1rem;
 	border: none;
-	cursor: pointer;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
 }
 
-/* Состояния: клавиатура/мышь/ошибки */
-:where(input, select, textarea, button):focus-visible {
-	outline: 2px solid #0a84ff;
-	outline-offset: 2px;
+dialog::backdrop {
+	background: rgba(0, 0, 0, 0.4);
 }
 
-button:hover {
-	filter: brightness(0.95);
+.form-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 1rem;
+}
+
+:where(a, button, input, select, textarea):focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 3px;
 }
 
 :disabled,
 [aria-disabled='true'] {
-	opacity: 0.6;
+	opacity: 0.5;
 	cursor: not-allowed;
 }
 
-/* Подсветка ошибочных полей (установите aria-invalid="true") */
-[aria-invalid='true'] {
-	border-color: #b00020;
+:target {
+	outline: 2px dashed var(--color-primary);
+	outline-offset: 3px;
+}
+
+.container {
+	width: min(95%, 1100px);
+	margin: 0 auto;
+	padding: 0 10px;
+}
+
+.section {
+	padding: var(--space-5) 0;
+}
+
+.section__title {
+	margin-bottom: var(--space-3);
+	font-size: 1.5rem;
+	text-align: center;
+}
+
+.site-nav__link {
+	color: var(--color-fg);
+	text-decoration: none;
+	font-weight: bold;
+}
+
+a.site-nav__link:hover {
+	color: var(--color-primary);
+}
+
+a.site-nav__link--active {
+	color: orange;
+	text-decoration: underline;
+}
+
+.card__img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.hero {
+	background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+		url('img/hero-1280.jpg');
+	color: white;
+	padding: 3rem 1rem;
+	border-radius: var(--radius);
+	background-position: center;
+	background-size: cover;
+	text-align: center;
+}
+
+.media {
+	aspect-ratio: 16/9;
+	width: min(100%, 900px);
+	margin: 0 auto;
+}
+
+.media iframe,
+.media video {
+	width: 100%;
+	height: 100%;
+	border: 0;
+	border-radius: var(--radius);
+}
+
+/* Новые стили для списка портфолио */
+#portfolio ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.5rem;
+	padding: 0;
+}
+
+#portfolio li {
+	overflow: hidden;
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
 }

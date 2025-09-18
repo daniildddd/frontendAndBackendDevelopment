@@ -6,4 +6,4 @@
 
 ## Ссылки
 
-- [Публичная страница на GitHub Pages](https://daniildddd.github.io/programmingTechnologies/)
+- [Публичная страница на GitHub Pages](https://daniildddd.github.io/programmingTechnologies/src/index.html)
